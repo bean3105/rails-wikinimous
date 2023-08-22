@@ -1,0 +1,12 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to "Wikinimous", articles_path%>
+  <%=link_to "New Article", new_article_path%>
+</nav>
+
+<div class="text-center">
+  <% @articles.each do |a| %>
+    <h2><%= link_to a.title, article_path(a.id)%></h2>
+    <p><%= a.content %></p>
+    <p><%= link_to "🗑", article_path(a),data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}%></p>
+  <%end%>
+</div>
